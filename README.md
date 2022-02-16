@@ -22,4 +22,4 @@ Bb-CBT Automation is Chrome Extension being developed to answer automatically CB
 - Inputting answer automatically
 - SKipping margin page
 - Option page
-- Sharing the saved data between users with JSON
+- Sharing the saved data between users with JSON file
