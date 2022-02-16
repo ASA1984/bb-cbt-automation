@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Bb-CBT Automation",
+  "version": "1.0.0",
+  "permissions": [
+    "scripting",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://bb.kosen-ac.jp/webapps/assessment/take/*",
+        "https://bb.kosen-ac.jp/webapps/assessment/review/*"
+      ],
+      "js": [
+        "inject/root.js",
+        "inject/getField.js",
+        "inject/collecting.js"
+      ],
+      "run_at" : "document_end"
+    }
+  ]
+}
