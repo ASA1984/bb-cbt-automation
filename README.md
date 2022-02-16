@@ -17,9 +17,12 @@ Bb-CBT Automation is Chrome Extension being developed to answer automatically CB
 
 ## Current Funciton
 - Saving locally the question texts and the corresponding correct answer by using `chrome.storage` API
+- Autofill the correct choice if the page follow both of them:
+  - Selection format
+  - Single page
 
 ## Implementation Schedule
-- Inputting answer automatically
+- Hndling all page type to autofill
 - SKipping margin page
 - Option page
 - Sharing the saved data between users with JSON file
