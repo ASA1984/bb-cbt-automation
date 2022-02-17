@@ -8,7 +8,7 @@ const details = document.getElementsByClassName("details");
 
 for (let i=0; i<details.length; i++) {
   let question= "";
-  let answer = "";
+  let answer;
 
 
   //問題文を取得
@@ -20,25 +20,36 @@ for (let i=0; i<details.length; i++) {
 
   //正答を取得
   (function getAnswer () {
-    let answerDivs = details[i].getElementsByClassName("reviewQuestionsAnswerDiv");
+    let answerTables = details[i].getElementsByClassName("bWhite");
+    let answersArray = [];
+    //解答が複数だった場合
+    if (answerTables) {
+      for (let j=0; j<answerTables.length; j++) {
+        let answerElement = answerTables[j].nextElementSibling;
+        answersArray.push(answerElement.textContent);
+      }
+      answer = answersArray
 
-    for (let j=0; j<answerDivs.length; j++) {
-      let answerElement = answerDivs[j];
+    //解答が単一の場合
+    } else {
+      let answerDivs = details[i].getElementsByClassName("reviewQuestionsAnswerDiv");
 
-      let correctFlag = answerElement.getElementsByClassName("correctAnswerFlag")[0];
-      if (correctFlag) {
-        answerElement = answerElement.getElementsByClassName("answerTextSpan")[0];
-        answer = getText(answerElement);
+      for (let j=0; j<answerDivs.length; j++) {
+        let answerElement = answerDivs[j];
+  
+        let correctFlag = answerElement.getElementsByClassName("correctAnswerFlag")[0];
+        if (correctFlag) {
+          answerElement = answerElement.getElementsByClassName("answerTextSpan")[0];
+          answer = getText(answerElement);
+        }
       }
     }
   })();
-
 
   //オブジェクトに{問題文:正答}の形で保存
   queAndAnsObj[question] = answer;
 }
 
-
-// console.log(queAndAnsObj);
+console.log(queAndAnsObj);
 
 chrome.storage.local.set(queAndAnsObj);
