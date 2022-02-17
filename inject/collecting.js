@@ -21,19 +21,18 @@ for (let i=0; i<details.length; i++) {
   //正答を取得
   (function getAnswer () {
     let answerTables = details[i].getElementsByClassName("bWhite");
-    let answersArray = [];
     //解答が複数だった場合
-    if (answerTables) {
+    if (answerTables.length) {
+      let answersArray = [];
       for (let j=0; j<answerTables.length; j++) {
-        let answerElement = answerTables[j].nextElementSibling;
-        answersArray.push(answerElement.textContent);
+        let answerTr = answerTables[j].nextElementSibling;
+        answersArray.push(answerTr.textContent);
       }
-      answer = answersArray
+      answer = answersArray;
 
     //解答が単一の場合
     } else {
       let answerDivs = details[i].getElementsByClassName("reviewQuestionsAnswerDiv");
-
       for (let j=0; j<answerDivs.length; j++) {
         let answerElement = answerDivs[j];
   
