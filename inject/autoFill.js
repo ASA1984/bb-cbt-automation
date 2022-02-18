@@ -12,6 +12,8 @@ let allCorrectAnsObj;
 chrome.storage.local.get(null, function (value) {
   allCorrectAnsObj = value;
 
+  // console.log(allCorrectAnsObj["上の図の回路が平衡しているとき、抵抗R3[Ω]を求めなさい。https://bb.kosen-ac.jp/bbcswebdav/pid-469162-dt-content-rid-14821767_1/xid-14821767_1"])
+
   if (fields.length) {
     const fieldArray = Array.from(fields);
     fieldArray.forEach(rootElement => {
@@ -81,13 +83,19 @@ function getQueElement (element) {
   
 }
 
+
+
 //自動回答
 function autoInput (queKey) {
   matchStorage(queKey);
 
   function matchStorage (key) {
     if (key in allCorrectAnsObj) {
+      console.log("答え" + allCorrectAnsObj[key])
       let correctAns = allCorrectAnsObj[key];
+      if ((typeof(correctAns)) != "object") {
+        correctAns = [correctAns];
+      }
       autoChoice(correctAns);
 
     } else {
@@ -100,7 +108,7 @@ function autoInput (queKey) {
       // console.log("選択");
 
       for (let j=0; j<choices.length; j++) {
-        if (choices[j] === correct) {
+        if (choices[j] == correct) {
           console.log(choices[j]);
           let correctId = inputs[j];
           let selection = document.getElementById(correctId);
@@ -112,6 +120,8 @@ function autoInput (queKey) {
       // console.log("入力");
 
       // console.log({"debug":[question,inputs,choices]})
+
+
       for (let j=0; j<inputs.length; j++) {
         let textArea = document.getElementById(inputs[j]);
         textArea.value = correct[j];
