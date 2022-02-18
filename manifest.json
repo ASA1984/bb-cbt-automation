@@ -1,7 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Bb-CBT Automation",
-  "version": "1.0.0",
+  "name": "Bb-CBT-Automation[Test]",
+  "version": "0.0.3",
+  "description": "Test version",
   "permissions": [
     "scripting",
     "storage"
@@ -14,8 +15,9 @@
       ],
       "js": [
         "inject/root.js",
-        "inject/getField.js",
-        "inject/collecting.js"
+        "inject/collecting.js",
+        "inject/autoFill.js",
+        "inject/margin.js"
       ],
       "run_at" : "document_end"
     }
