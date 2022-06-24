@@ -6,7 +6,7 @@ Bb-CBT Automation is Chrome Extension being developed to answer automatically CB
 ## Usage
 ### Load
 1. Clone this repository
-1. Open the Extension Management page by typing `chrome://extensions` into the address bar
+1. Go to `chrome://extensions`
 1. Enable **Developer Mode**
 1. Click the **Load unpacked** button and select the extension directory
 
